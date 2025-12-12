@@ -5,7 +5,11 @@ export const generateQuestions = async (
   content: string,
   apiKey?: string
 ): Promise<Question[]> => {
-  const key = apiKey || process.env.API_KEY;
+  // CRITICAL FIX: Safely access process.env to prevent crashes in browser environments (like Vercel static)
+  // where 'process' might be undefined.
+  const envKey = (typeof process !== 'undefined' && process.env) ? process.env.API_KEY : undefined;
+  const key = apiKey || envKey;
+
   if (!key) {
     throw new Error("API Key 未设置。请点击右上角设置按钮输入您的 Gemini API Key。");
   }
