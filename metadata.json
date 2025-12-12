@@ -1,0 +1,5 @@
+{
+  "name": "璇宝的考试题库",
+  "description": "智能考试生成器，利用Gemini API将您的PDF和Word文档转化为互动测试。支持自动评分、详细解析和Word导出。",
+  "requestFramePermissions": []
+}
